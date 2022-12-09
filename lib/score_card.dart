@@ -16,12 +16,9 @@ const double onAlign = -1;
 const double offAlign = 1;
 const Color selectedColor = Colors.white;
 const Color normalColor = Colors.black54;
+
 Widget scores = StatListWidget(medal:  Icon(FontAwesomeIcons.medal, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18K", second: "12K",third: "3k",  total: "33.2K",);
 
-Rpc(){
-  print("hdhdhddj");
-  scores = StatListWidget(medal:  Icon(FontAwesomeIcons.eyeSlash, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18", second: "12",third: "3",  total: "33.2",);
-}
 class _ScoreCardState extends State<ScoreCard> {
 
   double width = 63.81;
@@ -30,11 +27,17 @@ class _ScoreCardState extends State<ScoreCard> {
   Color? loginColor;
   Color? signInColor;
 
+
   bool opened = false;
 
   bool active = false;
 
 
+  Rpc(){
+    setState(() {
+      scores = StatListWidget(medal:  Icon(FontAwesomeIcons.eyeSlash, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18", second: "12",third: "3",  total: "33.2",);
+    });
+    }
 
   @override
   void initState() {
@@ -44,15 +47,12 @@ class _ScoreCardState extends State<ScoreCard> {
     signInColor = normalColor;
   }
 
-   Rpc(){
-    setState(() {
-      print("yellow");
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -66,7 +66,6 @@ class _ScoreCardState extends State<ScoreCard> {
           ),
           SliverToBoxAdapter(
             child: Container(
-              height: MediaQuery.of(context).size.height,
               color: Colors.black,
               child: Column(
                 children: [
@@ -99,7 +98,7 @@ class _ScoreCardState extends State<ScoreCard> {
                   ),
                   SizedBox(height: 10,),
 
-                  ExpansionListWidget(title: "vs Tay Roc",),
+                  ExpansionListWidget(title: "vc Tay Roc",),
                   ExpansionListWidget(title: "vs Shotgun Suge",),
                   ExpansionListWidget(title: "vs Jerry Wess",),
 
@@ -149,8 +148,8 @@ class ExpansionListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      collapsedIconColor: Colors.white,
-      iconColor: Color(0xFF111111),
+      collapsedIconColor: Color(0xFF111111),
+      iconColor: Colors.white,
       tilePadding: EdgeInsets.symmetric(horizontal: 10),
       collapsedBackgroundColor: Colors.white.withOpacity(0.8),
       onExpansionChanged: (e){
@@ -527,7 +526,6 @@ class _CustomToggleState extends State<CustomToggle> {
               setState(() {
                 xAlign = onAlign;
                 widget.onTap;
-                Rpc();
                 icon = Icon(Icons.remove_red_eye_outlined, color: Colors.white,);
               });
             },
