@@ -17,35 +17,31 @@ const double offAlign = 1;
 const Color selectedColor = Colors.white;
 const Color normalColor = Colors.black54;
 
-Widget scores = StatListWidget(medal:  Icon(FontAwesomeIcons.medal, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18K", second: "12K",third: "3k",  total: "33.2K",);
+Widget scores = StatListWidget(medal:  const  Icon(FontAwesomeIcons.medal, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18K", second: "12K",third: "3k",  total: "33.2K",);
 
 class _ScoreCardState extends State<ScoreCard> {
 
   double width = 63.81;
   double height = 34;
   double xAlign = 0.0;
-  Color? loginColor;
-  Color? signInColor;
 
 
   bool opened = false;
 
   bool active = false;
 
-  Icon? icon = Icon(FontAwesomeIcons.eyeSlash, color: Colors.white,);
-  Color btnColor =  Color(0xFF777777);
+  Icon? icon = const Icon(FontAwesomeIcons.eyeSlash, color: Colors.white,);
+  Color btnColor =  const  Color(0xFF777777);
 
 
-  Switch1(){
+   switch1(){
     setState(() {
-      print("yeasss");
-        scores = StatListWidget(medal:  Icon(FontAwesomeIcons.medal, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18", second: "12",third: "3",  total: "33.2",);
+        scores = StatListWidget(medal:  const Icon(FontAwesomeIcons.medal, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18", second: "12",third: "3",  total: "33.2",);
     });
     }
-  Switch2(){
+  switch2(){
     setState(() {
-      print("yeasss");
-      scores = StatListWidget(medal:  Icon(FontAwesomeIcons.medal, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18K", second: "12K",third: "3k",  total: "33.2K",);
+      scores = StatListWidget(medal:  const  Icon(FontAwesomeIcons.medal, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18K", second: "12K",third: "3k",  total: "33.2K",);
        });
   }
 
@@ -53,8 +49,7 @@ class _ScoreCardState extends State<ScoreCard> {
   void initState() {
     super.initState();
     xAlign = onAlign;
-    loginColor = selectedColor;
-    signInColor = normalColor;
+
   }
 
 
@@ -66,26 +61,26 @@ class _ScoreCardState extends State<ScoreCard> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            title: MyAppBar(),
+            title: const  MyAppBar(),
             pinned: true,
             backgroundColor: Colors.black,
             expandedHeight: MediaQuery.of(context).size.height * 0.33,
-            flexibleSpace: FlexibleSpaceBar(
+            flexibleSpace:  const FlexibleSpaceBar(
               background: MyFlexiableAppBar(),
             ),
           ),
           SliverToBoxAdapter(
             child: Container(
               color: Colors.black,
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding:  const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
-                  Divider(color: Colors.white,),
+                  const  Divider(color: Colors.white,),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("BATTLE STATS",
+                      const Text("BATTLE STATS",
                       style: TextStyle(
                         fontFamily: "Oswald",
                         fontSize: 18,
@@ -94,20 +89,20 @@ class _ScoreCardState extends State<ScoreCard> {
 
                       Row(
                         children: [
-                          Text("Show My Scores",
+                          const Text("Show My Scores",
                           style: TextStyle(
                             color: Color(0xFF777777),
                             fontSize: 12
                           ),),
-                          SizedBox(width: 5,),
+                          const SizedBox(width: 5,),
                           Center(
                             child:  Container(
                               width: width,
                               height: height,
-                              padding: EdgeInsets.all(4),
+                              padding: const  EdgeInsets.all(4),
                               decoration: BoxDecoration(
                                 color: btnColor,
-                                borderRadius: BorderRadius.all(
+                                borderRadius:  const BorderRadius.all(
                                   Radius.circular(50.0),
                                 ),
                               ),
@@ -115,11 +110,11 @@ class _ScoreCardState extends State<ScoreCard> {
                                 children: [
                                   AnimatedAlign(
                                     alignment: Alignment(xAlign, 0),
-                                    duration: Duration(milliseconds: 300),
+                                    duration:  const Duration(milliseconds: 300),
                                     child: Container(
                                         width: width * 0.5,
                                         height: height,
-                                        decoration: BoxDecoration(
+                                        decoration:  const BoxDecoration(
                                           color: Colors.black,
                                           borderRadius: BorderRadius.all(
                                             Radius.circular(50.0),
@@ -131,14 +126,14 @@ class _ScoreCardState extends State<ScoreCard> {
                                   GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        btnColor =  Color(0xFF777777);
-                                        Switch2();
+                                        btnColor =   const Color(0xFF777777);
+                                        switch2();
                                         xAlign = onAlign;
-                                        icon = Icon(FontAwesomeIcons.eyeSlash, color: Colors.white,size: 16,);
+                                        icon = const  Icon(FontAwesomeIcons.eyeSlash, color: Colors.white,size: 16,);
                                       });
                                     },
                                     child: Align(
-                                      alignment: Alignment(-1, 0),
+                                      alignment:  const Alignment(-1, 0),
                                       child: Container(
                                         width: width * 0.5,
                                         padding: EdgeInsets.all(3),
@@ -151,17 +146,17 @@ class _ScoreCardState extends State<ScoreCard> {
                                   GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        btnColor = Color(0xFFC8A448);
+                                        btnColor =  const Color(0xFFC8A448);
                                         xAlign = offAlign;
-                                        Switch1();
-                                        icon = Icon(FontAwesomeIcons.eye, color: Colors.white, size: 16);
+                                        switch1();
+                                        icon =  const Icon(FontAwesomeIcons.eye, color: Colors.white, size: 16);
                                       });
                                     },
                                     child: Align(
-                                      alignment: Alignment(1, 0),
+                                      alignment:  const Alignment(1, 0),
                                       child: Container(
                                         width: width * 0.5,
-                                        padding: EdgeInsets.all(10),
+                                        padding:  const EdgeInsets.all(10),
                                         color: Colors.transparent,
                                         alignment: Alignment.center,
                                       ),
@@ -175,7 +170,7 @@ class _ScoreCardState extends State<ScoreCard> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
 
                   ExpansionListWidget(title: "vs Tay Roc",),
                   ExpansionListWidget(title: "vs Shotgun Suge",),
@@ -185,11 +180,11 @@ class _ScoreCardState extends State<ScoreCard> {
                   Container(
                     width: MediaQuery.of(context).size.width * 0.25,
                     decoration: BoxDecoration(
-                       color: Color(0xFF3A3A3A),
+                       color:  const Color(0xFF3A3A3A),
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    padding: EdgeInsets.all(10),
+                    margin:  const EdgeInsets.symmetric(vertical: 20),
+                    padding:  const EdgeInsets.all(10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -201,7 +196,7 @@ class _ScoreCardState extends State<ScoreCard> {
                         color: Colors.white.withOpacity(0.9)
                   ),),
 
-                        Icon(Icons.more_horiz, color: Colors.white, size: 15,)
+                        const Icon(Icons.more_horiz, color: Colors.white, size: 15,)
                       ],
                     )
                   )
@@ -260,18 +255,18 @@ class _ExpansionListWidgetState extends State<ExpansionListWidget> {
         scores,
         Container(
           height: 34,
-          padding: EdgeInsets.symmetric(horizontal: 20,),
+          padding:  const EdgeInsets.symmetric(horizontal: 20,),
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: Colors.white,
+          decoration:  const BoxDecoration(
+            color:  Colors.white,
           ),
           child: Container(
             height: 34,
             decoration: BoxDecoration(
-              color: Color(0xFF111111),
+              color:  const Color(0xFF111111),
               borderRadius: BorderRadius.circular(4),
             ),
-            child: Center(
+            child:  const Center(
               child: Text("WATCH & VOTE",
                 style: TextStyle(
                     fontFamily: "Oswald",
@@ -371,12 +366,12 @@ class StatLegendWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: const  EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Row(
         children: [
-          Container(
+           SizedBox(
             width: MediaQuery.of(context).size.width * 0.32,
-            child: Text("ARTIST",
+            child:  const Text("ARTIST",
             style: TextStyle(
               fontSize: 12,
               color: Color(0xFF777777),
@@ -386,10 +381,10 @@ class StatLegendWidget extends StatelessWidget {
 
           Container(
             width: MediaQuery.of(context).size.width * 0.53,
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding:  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+              children:  const [
                 Text("R1",
                   style: TextStyle(
                       fontSize: 12,
@@ -438,16 +433,16 @@ class StatListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding:  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.32,
             child: Row(
               children: [
                 medal!,
                 Text(artist!,
-                  style: TextStyle(
+                  style:  const TextStyle(
                       fontSize: 14,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
@@ -458,30 +453,30 @@ class StatListWidget extends StatelessWidget {
 
           Container(
             width: MediaQuery.of(context).size.width * 0.54,
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const  EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(first!,
-                  style: TextStyle(
+                  style: const  TextStyle(
                       fontSize: 18,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
                 Text(second!,
-                  style: TextStyle(
+                  style:  const TextStyle(
                       fontSize: 18,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
                 Text(third!,
-                  style: TextStyle(
+                  style:  const TextStyle(
                       fontSize: 18,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
                 Text(total!,
-                  style: TextStyle(
+                  style:  const TextStyle(
                       fontSize: 18,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
@@ -519,7 +514,7 @@ class StatScoresWidget extends StatelessWidget {
               children: [
                 medal!,
                 Text(artist!,
-                  style: TextStyle(
+                  style:  const TextStyle(
                       fontSize: 14,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
@@ -530,30 +525,30 @@ class StatScoresWidget extends StatelessWidget {
 
           Container(
             width: MediaQuery.of(context).size.width * 0.58,
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const  EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(first!,
-                  style: TextStyle(
+                  style:  const TextStyle(
                       fontSize: 12,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
                 Text(second!,
-                  style: TextStyle(
+                  style: const  TextStyle(
                       fontSize: 12,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
                 Text(third!,
-                  style: TextStyle(
+                  style: const  TextStyle(
                       fontSize: 12,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
                 Text(total!,
-                  style: TextStyle(
+                  style: const  TextStyle(
                       fontSize: 12,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
@@ -582,7 +577,7 @@ class _CustomToggleState extends State<CustomToggle> {
   double width = 63.81;
   double height = 34;
   double xAlign = 0.0;
-  Icon? icon = Icon(FontAwesomeIcons.eyeSlash, color: Colors.white,);
+  Icon? icon =  const Icon(FontAwesomeIcons.eyeSlash, color: Colors.white,);
   Color btnColor =  Color(0xFF777777);
 
   @override
@@ -598,10 +593,10 @@ class _CustomToggleState extends State<CustomToggle> {
     return Container(
       width: width,
       height: height,
-      padding: EdgeInsets.all(4),
+      padding:  const EdgeInsets.all(4),
       decoration: BoxDecoration(
         color: btnColor,
-        borderRadius: BorderRadius.all(
+        borderRadius: const  BorderRadius.all(
           Radius.circular(50.0),
         ),
       ),
@@ -613,7 +608,7 @@ class _CustomToggleState extends State<CustomToggle> {
             child: Container(
               width: width * 0.5,
               height: height,
-              decoration: BoxDecoration(
+              decoration:  const BoxDecoration(
                 color: Colors.black,
                 borderRadius: BorderRadius.all(
                   Radius.circular(50.0),
