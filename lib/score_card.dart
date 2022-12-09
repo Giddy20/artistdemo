@@ -32,12 +32,22 @@ class _ScoreCardState extends State<ScoreCard> {
 
   bool active = false;
 
+  Icon? icon = Icon(FontAwesomeIcons.eyeSlash, color: Colors.white,);
+  Color btnColor =  Color(0xFF777777);
 
-  Rpc(){
+
+  Switch1(){
     setState(() {
-      scores = StatListWidget(medal:  Icon(FontAwesomeIcons.eyeSlash, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18", second: "12",third: "3",  total: "33.2",);
+      print("yeasss");
+        scores = StatListWidget(medal:  Icon(FontAwesomeIcons.medal, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18", second: "12",third: "3",  total: "33.2",);
     });
     }
+  Switch2(){
+    setState(() {
+      print("yeasss");
+      scores = StatListWidget(medal:  Icon(FontAwesomeIcons.medal, color: Color(0xFFE75C21), size: 10,),artist: "Young Kannon",first: "18K", second: "12K",third: "3k",  total: "33.2K",);
+       });
+  }
 
   @override
   void initState() {
@@ -59,7 +69,7 @@ class _ScoreCardState extends State<ScoreCard> {
             title: MyAppBar(),
             pinned: true,
             backgroundColor: Colors.black,
-            expandedHeight: MediaQuery.of(context).size.height * 0.32,
+            expandedHeight: MediaQuery.of(context).size.height * 0.33,
             flexibleSpace: FlexibleSpaceBar(
               background: MyFlexiableAppBar(),
             ),
@@ -67,6 +77,7 @@ class _ScoreCardState extends State<ScoreCard> {
           SliverToBoxAdapter(
             child: Container(
               color: Colors.black,
+              padding: EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
                   Divider(color: Colors.white,),
@@ -90,7 +101,75 @@ class _ScoreCardState extends State<ScoreCard> {
                           ),),
                           SizedBox(width: 5,),
                           Center(
-                            child: CustomToggle(onTap: Rpc),
+                            child:  Container(
+                              width: width,
+                              height: height,
+                              padding: EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                color: btnColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(50.0),
+                                ),
+                              ),
+                              child: Stack(
+                                children: [
+                                  AnimatedAlign(
+                                    alignment: Alignment(xAlign, 0),
+                                    duration: Duration(milliseconds: 300),
+                                    child: Container(
+                                        width: width * 0.5,
+                                        height: height,
+                                        decoration: BoxDecoration(
+                                          color: Colors.black,
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(50.0),
+                                          ),
+                                        ),
+                                        child: icon
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        btnColor =  Color(0xFF777777);
+                                        Switch2();
+                                        xAlign = onAlign;
+                                        icon = Icon(FontAwesomeIcons.eyeSlash, color: Colors.white,size: 16,);
+                                      });
+                                    },
+                                    child: Align(
+                                      alignment: Alignment(-1, 0),
+                                      child: Container(
+                                        width: width * 0.5,
+                                        padding: EdgeInsets.all(3),
+                                        color: Colors.transparent,
+                                        alignment: Alignment.center,
+
+                                      ),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        btnColor = Color(0xFFC8A448);
+                                        xAlign = offAlign;
+                                        Switch1();
+                                        icon = Icon(FontAwesomeIcons.eye, color: Colors.white, size: 16);
+                                      });
+                                    },
+                                    child: Align(
+                                      alignment: Alignment(1, 0),
+                                      child: Container(
+                                        width: width * 0.5,
+                                        padding: EdgeInsets.all(10),
+                                        color: Colors.transparent,
+                                        alignment: Alignment.center,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           )
                         ],
                       ),
@@ -98,7 +177,7 @@ class _ScoreCardState extends State<ScoreCard> {
                   ),
                   SizedBox(height: 10,),
 
-                  ExpansionListWidget(title: "vc Tay Roc",),
+                  ExpansionListWidget(title: "vs Tay Roc",),
                   ExpansionListWidget(title: "vs Shotgun Suge",),
                   ExpansionListWidget(title: "vs Jerry Wess",),
 
@@ -137,25 +216,44 @@ class _ScoreCardState extends State<ScoreCard> {
   }
 }
 
-class ExpansionListWidget extends StatelessWidget {
+class ExpansionListWidget extends StatefulWidget {
 
   String? title;
+
    ExpansionListWidget({
     super.key,
   this.title,
   });
 
   @override
+  State<ExpansionListWidget> createState() => _ExpansionListWidgetState();
+}
+
+class _ExpansionListWidgetState extends State<ExpansionListWidget> {
+  Color textColor = Colors.white;
+
+  @override
   Widget build(BuildContext context) {
     return ExpansionTile(
       collapsedIconColor: Color(0xFF111111),
       iconColor: Colors.white,
-      tilePadding: EdgeInsets.symmetric(horizontal: 10),
-      collapsedBackgroundColor: Colors.white.withOpacity(0.8),
+      tilePadding: EdgeInsets.only(right: 10),
+      collapsedBackgroundColor: Color(0x99777777),
       onExpansionChanged: (e){
+        print(e);
+        if(e == true){
+          setState(() {
+            textColor = Colors.black;
+          });
+        }
+        else{
+          setState(() {
+            textColor = Colors.white;
+          });
+        }
       },
       backgroundColor: Colors.white.withOpacity(0.8),
-      title: StatTitle(title: title),
+      title: StatTitle(title: widget.title, color: textColor),
       children: <Widget>[
         StatLegendWidget(),
         scores,
@@ -191,9 +289,12 @@ class ExpansionListWidget extends StatelessWidget {
 
 class StatTitle extends StatelessWidget {
   String? title;
+  Color? color;
+
+
   StatTitle({
     super.key,
-  this.title,
+  this.title,this.color
   });
 
   @override
@@ -213,7 +314,7 @@ class StatTitle extends StatelessWidget {
               style: TextStyle(
                   fontSize: 18.0,
                   fontFamily: "Oswald",
-                  color: Color(0xFF111111)
+                  color: color,
               ),
             ),
           ),
@@ -226,14 +327,14 @@ class StatTitle extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 12.0,
                       fontFamily: "Lato",
-                      color: Color(0xFF111111)
+                      color:color
                   ),
                 ),
                 Text(" Born Legacy 10",
                   style: TextStyle(
                       fontSize: 12.0,
                       fontFamily: "Lato",
-                      color: Color(0xFF111111),
+                      color: color,
                       fontWeight: FontWeight.bold
                   ),
                 ),
@@ -241,14 +342,14 @@ class StatTitle extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 12.0,
                       fontFamily: "Lato",
-                      color: Color(0xFF7777777)
+                      color: color
                   ),
                 ),
                 Text(" 12/11/20",
                   style: TextStyle(
                       fontSize: 12.0,
                       fontFamily: "Lato",
-                      color: Color(0xFF111111),
+                      color: color,
                     fontWeight: FontWeight.bold
                   ),
                 ),
@@ -274,7 +375,7 @@ class StatLegendWidget extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: MediaQuery.of(context).size.width * 0.36,
+            width: MediaQuery.of(context).size.width * 0.32,
             child: Text("ARTIST",
             style: TextStyle(
               fontSize: 12,
@@ -284,7 +385,7 @@ class StatLegendWidget extends StatelessWidget {
           ),
 
           Container(
-            width: MediaQuery.of(context).size.width * 0.58,
+            width: MediaQuery.of(context).size.width * 0.53,
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -341,13 +442,13 @@ class StatListWidget extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: MediaQuery.of(context).size.width * 0.36,
+            width: MediaQuery.of(context).size.width * 0.32,
             child: Row(
               children: [
                 medal!,
                 Text(artist!,
                   style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 14,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
@@ -356,32 +457,32 @@ class StatListWidget extends StatelessWidget {
           ),
 
           Container(
-            width: MediaQuery.of(context).size.width * 0.58,
+            width: MediaQuery.of(context).size.width * 0.54,
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(first!,
                   style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 18,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
                 Text(second!,
                   style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 18,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
                 Text(third!,
                   style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 18,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
                 Text(total!,
                   style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 18,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
@@ -419,7 +520,7 @@ class StatScoresWidget extends StatelessWidget {
                 medal!,
                 Text(artist!,
                   style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 14,
                       color: Color(0xFF777777),
                       fontFamily: "Oswald"
                   ),),
@@ -481,8 +582,8 @@ class _CustomToggleState extends State<CustomToggle> {
   double width = 63.81;
   double height = 34;
   double xAlign = 0.0;
-  Icon? icon = Icon(Icons.remove_red_eye_outlined, color: Colors.white,);
-
+  Icon? icon = Icon(FontAwesomeIcons.eyeSlash, color: Colors.white,);
+  Color btnColor =  Color(0xFF777777);
 
   @override
   void initState() {
@@ -499,7 +600,7 @@ class _CustomToggleState extends State<CustomToggle> {
       height: height,
       padding: EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: Color(0xFF777777),
+        color: btnColor,
         borderRadius: BorderRadius.all(
           Radius.circular(50.0),
         ),
@@ -524,9 +625,10 @@ class _CustomToggleState extends State<CustomToggle> {
           GestureDetector(
             onTap: () {
               setState(() {
+                btnColor =  Color(0xFF777777);
                 xAlign = onAlign;
                 widget.onTap;
-                icon = Icon(Icons.remove_red_eye_outlined, color: Colors.white,);
+                icon = Icon(FontAwesomeIcons.eyeSlash, color: Colors.white,size: 16,);
               });
             },
             child: Align(
@@ -543,9 +645,10 @@ class _CustomToggleState extends State<CustomToggle> {
           GestureDetector(
             onTap: () {
               setState(() {
+                btnColor = Color(0xFFC8A448);
                 xAlign = offAlign;
                 widget.onTap;
-                icon = Icon(FontAwesomeIcons.eyeSlash, color: Colors.white,);
+                icon = Icon(FontAwesomeIcons.eye, color: Colors.white, size: 16);
               });
             },
             child: Align(

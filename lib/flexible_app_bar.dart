@@ -83,6 +83,7 @@ class MyFlexiableAppBar extends StatelessWidget {
                           fontSize: 13.06
                       )
                   ),
+                  SizedBox(height: 7,),
                   Icon(Icons.back_hand, color: Color(0xFFC8A448),)
                 ],),
 
@@ -133,6 +134,7 @@ class MyFlexiableAppBar extends StatelessWidget {
                           fontSize: 13.06
                       )
                   ),
+                  SizedBox(height: 7,),
                   const Icon(Icons.check, color: Color(0xFFC8A448),)
                 ],),
             ],
@@ -148,81 +150,80 @@ class MyFlexiableAppBar extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: "Lato",
                   fontSize: 15,
-                  color: Colors.white
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF777777)
                 ),),
                 Text("Performance",
                   style: TextStyle(
                       fontFamily: "Lato",
                       fontSize: 15,
-                      color: Colors.white
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF777777)
                   ),),
                 Text("Lyrical",
                   style: TextStyle(
                       fontFamily: "Lato",
                       fontSize: 15,
-                      color: Colors.white
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF777777)
                   ),),
                 Text("Delivery",
                   style: TextStyle(
                       fontFamily: "Lato",
                       fontSize: 15,
-                      color: Colors.white
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF777777)
                   ),),
               ],
             ),
           ),
 
           Container(
+            padding: EdgeInsets.symmetric(horizontal: 16,vertical: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(bottom: 8.0,left:8.0),
-                  child: Row(
-                    children: const [
-                      Text(
-                          "Displaying:",
-                          style: TextStyle(
-                              color: Color(0xFF777777),
-                              fontFamily: 'Poppins',
-                              fontSize: 12.0
-                          )
-                      ),
-                      Text(
-                          " 4 of 32 Battles",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Poppins',
-                              fontSize: 12.0,
-                          )
-                      ),
-                    ],
-                  ),
-                ),
-
-                Padding(
-                  padding: EdgeInsets.only(bottom: 16.0,left:8.0, right: 8),
-                  child: Row(
-                    children: const [
-                      Text(
-                          "Date:",
-                          style: TextStyle(
-                              color: Color(0xFF777777),
-                              fontFamily: 'Poppins',
-                              fontSize: 12.0
-                          )
-                      ),
-                      Text(
-                          " Descending",
-                          style: TextStyle(
+                Row(
+                  children: const [
+                    Text(
+                        "Displaying:",
+                        style: TextStyle(
+                            color: Color(0xFF777777),
+                            fontFamily: 'Poppins',
+                            fontSize: 12.0
+                        )
+                    ),
+                    Text(
+                        " 4 of 32 Battles",
+                        style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'Poppins',
                             fontSize: 12.0,
-                          )
-                      ),
-                      Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 15,)
-                    ],
-                  ),
+                        )
+                    ),
+                  ],
+                ),
+
+                Row(
+                  children: const [
+                    Text(
+                        "Date:",
+                        style: TextStyle(
+                            color: Color(0xFF777777),
+                            fontFamily: 'Poppins',
+                            fontSize: 12.0
+                        )
+                    ),
+                    Text(
+                        " Descending",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                          fontSize: 12.0,
+                        )
+                    ),
+                    Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 15,)
+                  ],
                 ),
 
 
