@@ -62,10 +62,10 @@ class _ScoreCardState extends State<ScoreCard> {
         slivers: [
           SliverAppBar(
             title: const  MyAppBar(),
-            pinned: true,
+            pinned: false,
             backgroundColor: Colors.black,
             expandedHeight: MediaQuery.of(context).size.height * 0.33,
-            flexibleSpace:  const FlexibleSpaceBar(
+            flexibleSpace:  FlexibleSpaceBar(
               background: MyFlexiableAppBar(),
             ),
           ),
@@ -226,6 +226,7 @@ class ExpansionListWidget extends StatefulWidget {
 
 class _ExpansionListWidgetState extends State<ExpansionListWidget> {
   Color textColor = Colors.white;
+  Color subTextColor = Colors.white.withOpacity(0.5);
 
   @override
   Widget build(BuildContext context) {
@@ -239,16 +240,18 @@ class _ExpansionListWidgetState extends State<ExpansionListWidget> {
         if(e == true){
           setState(() {
             textColor = Colors.black;
+            subTextColor = Colors.black;
           });
         }
         else{
           setState(() {
             textColor = Colors.white;
+            subTextColor = Colors.white.withOpacity(0.5);
           });
         }
       },
       backgroundColor: Colors.white.withOpacity(0.8),
-      title: StatTitle(title: widget.title, color: textColor),
+      title: StatTitle(title: widget.title, color: textColor, subTextColor: subTextColor),
       children: <Widget>[
         StatLegendWidget(),
         scores,
@@ -285,11 +288,12 @@ class _ExpansionListWidgetState extends State<ExpansionListWidget> {
 class StatTitle extends StatelessWidget {
   String? title;
   Color? color;
+  Color? subTextColor;
 
 
   StatTitle({
     super.key,
-  this.title,this.color
+  this.title,this.color,this.subTextColor
   });
 
   @override
@@ -329,7 +333,7 @@ class StatTitle extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 12.0,
                       fontFamily: "Lato",
-                      color: color,
+                      color: subTextColor,
                       fontWeight: FontWeight.bold
                   ),
                 ),

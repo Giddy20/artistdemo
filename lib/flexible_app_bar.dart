@@ -151,28 +151,28 @@ class MyFlexiableAppBar extends StatelessWidget {
                   fontFamily: "Lato",
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF777777)
+                  color: Colors.white.withOpacity(0.5),
                 ),),
                 Text("Performance",
                   style: TextStyle(
                       fontFamily: "Lato",
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF777777)
+                      color: Colors.white.withOpacity(0.5),
                   ),),
                 Text("Lyrical",
                   style: TextStyle(
                       fontFamily: "Lato",
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF777777)
+                      color: Colors.white.withOpacity(0.5),
                   ),),
                 Text("Delivery",
                   style: TextStyle(
                       fontFamily: "Lato",
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF777777)
+                      color: Colors.white.withOpacity(0.5),
                   ),),
               ],
             ),
